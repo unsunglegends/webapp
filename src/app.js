@@ -8,6 +8,7 @@ const app = express()
 const publicDir = path.join(__dirname,'../public')
 const viewsDir = path.join(__dirname,'../templates/views')
 const partialsDir = path.join(__dirname,'../templates/partials')
+const port = process.env.PORT || 2099
 app.set('view engine','hbs')
 app.set('views',viewsDir)
 hbs.registerPartials(partialsDir)
@@ -77,6 +78,6 @@ app.get('*',(req,res)=>{
         name:"chaitanya"
     })
 })
-app.listen(2099,( )=>{
-    console.log("port is running on 2099")
+app.listen(port,( )=>{
+    console.log("port is running on "+ port)
 })
