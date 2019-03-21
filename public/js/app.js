@@ -3,9 +3,11 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
+const messageThree = document.querySelector('#message-3')
 const weatherdata = (place) =>{
     messageOne.textContent='loading...'
     messageTwo.textContent=''
+    messageThree.textContent=''
 fetch('/weather?address='+place).then((response) =>{
    
     response.json().then((data) =>{
@@ -15,8 +17,9 @@ fetch('/weather?address='+place).then((response) =>{
         }else{
         console.log(data);
         //const dataparse=JSON.parse(data)
-        messageOne.textContent= 'current tempature was ' +data.Data.temperature+ ' probability of rain ' +data.Data.precipProbability+ "% "+data.Data.summary 
-        messageTwo.textContent=data.name
+        messageOne.textContent= "Location: "+ data.name  
+        messageTwo.textContent=data.Data.summary
+        messageThree.textContent='Currently tempature was ' +data.Data.temperature+ ' degress out. The probability of rain ' +data.Data.precipProbability+ "%. "
         }
     })
 })
